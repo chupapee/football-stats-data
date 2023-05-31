@@ -1,6 +1,6 @@
-import { configure, presets } from 'eslint-kit';
+const { configure, presets } = require('eslint-kit');
 
-export default configure({
+module.exports = configure({
 	presets: [
 		presets.node(),
 		presets.prettier({
@@ -17,8 +17,10 @@ export default configure({
 		presets.typescript({
 			tsconfig: 'tsconfig.json',
 		}),
-		presets.react({
-			version: 'detect',
-		}),
 	],
+	extend: {
+		rules: {
+			'array-callback-return': 'off',
+		},
+	},
 });
