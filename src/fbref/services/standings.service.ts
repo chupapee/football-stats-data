@@ -1,11 +1,11 @@
 import * as cheerio from 'cheerio';
 import axios from 'axios';
 
-import { leagues, standingIndicators, urlList } from './consts';
-import { IStandings, ITeamStat } from './types';
+import { StandingIndicators, TLeagueName, urlList } from '../consts';
+import { IStandings, ITeamStat } from '../types';
 
 export class StandingsService {
-	static fetch = async (leaguenName: keyof typeof leagues): Promise<HTML> => {
+	static fetch = async (leaguenName: TLeagueName): Promise<HTML> => {
 		const url = urlList.queries.standings(leaguenName);
 
 		try {
@@ -33,9 +33,9 @@ export class StandingsService {
 			if (!$(tr).hasClass('spacer')) {
 				tr.children.map((el) => {
 					const text = $(el).text();
-					for (const key in standingIndicators) {
+					for (const key in StandingIndicators) {
 						if ($(el).hasClass(key)) {
-							const indicator = standingIndicators[key as keyof typeof standingIndicators];
+							const indicator = StandingIndicators[key as keyof typeof StandingIndicators];
 							cells.push(`${indicator} ${text}`);
 							return;
 						}
@@ -49,8 +49,8 @@ export class StandingsService {
 		const standings: IStandings = [];
 		for (let i = 0; i < cells.length; i += headers.length) {
 			const teamStat: ITeamStat = {} as ITeamStat;
-			for (let j = 0; j < headers.length; j++) {
-				teamStat[headers[j]] = cells[i + j];
+			for (const [j, header] of headers.entries()) {
+				teamStat[header] = cells[i + j];
 			}
 			standings.push(teamStat as ITeamStat);
 		}

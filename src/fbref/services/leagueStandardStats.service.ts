@@ -1,11 +1,11 @@
 import * as cheerio from 'cheerio';
 import puppeteer from 'puppeteer';
 
-import { leagues, urlList } from './consts';
-import { IPlayerStats } from './types';
+import { TLeagueName, urlList } from '../consts';
+import { IPlayerStats } from '../types';
 
 export class LeagueStandardStatsService {
-	static fetch = async (leagueName: keyof typeof leagues) => {
+	static fetch = async (leagueName: TLeagueName) => {
 		const url = urlList.queries.leagueStandardStats(leagueName);
 		try {
 			const browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox', '--disable-setuid-sandbox'] });
