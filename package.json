@@ -1,6 +1,6 @@
 {
-	"name": "football-stats",
-	"version": "0.0.1",
+	"name": "football-stats-data",
+	"version": "0.0.2",
 	"description": "A simple JavaScript API providing football data",
 	"keywords": [
 		"football",

@@ -2,7 +2,7 @@
 
 <p>
 
-<img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000"  />
+<img alt="Version" src="https://img.shields.io/badge/version-0.0.2-blue.svg?cacheSeconds=2592000"  />
 
 </p>
 
@@ -22,7 +22,7 @@ import { Fbref } from 'football-stats-data';
 const fbref = new Fbref();
 
 fbref.standings('La-Liga').then((teams) => {
-    console.log(teams);
+	console.log(teams);
 });
 ```
 
@@ -64,7 +64,7 @@ const league = 'La-Liga';
 const clubName = 'Real Madrid';
 
 fbref.leaguePlayersStats(league, clubName).then((players) => {
-    console.log(players);
+	console.log(players);
 });
 
 /**
