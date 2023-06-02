@@ -1,8 +1,8 @@
-<h1 align="center">⚽️ A simple NPM Package providing football data ⚽️</h1>
+<h2 align="center">⚽️ A simple package providing football data ⚽️</h2>
 
 <p>
 
-<img alt="Version" src="https://img.shields.io/badge/version-0.0.2-blue.svg?cacheSeconds=2592000"  />
+<img alt="Version" src="https://img.shields.io/badge/version-0.0.3-darkGreen.svg?cacheSeconds=2592000"  />
 
 </p>
 
@@ -10,19 +10,17 @@
 
 ```sh
 
-yarn add football-stats
+yarn add football-stats-data
 
 ```
 
 ## Usage
 
 ```javascript
-import { Fbref } from 'football-stats-data';
-
-const fbref = new Fbref();
+import { fbref } from 'football-stats-data';
 
 fbref.standings('La-Liga').then((teams) => {
-	console.log(teams);
+  console.log(teams);
 });
 ```
 
@@ -38,13 +36,6 @@ fbref.standings('La-Liga').then((teams) => {
     "Goals For": "74",
     "Goals Against": "35",
     "Goal Difference": "+39",
-    "Points": "77",
-    "Points/Game": "2.08",
-    "xG": "73.8",
-    "xG Allowed": "36.6",
-    "xG Difference": "+37.2",
-    "xG Difference/90": "+1.00",
-    "Last 5": "L W L W W",
     ...
   },
   {
@@ -56,49 +47,46 @@ fbref.standings('La-Liga').then((teams) => {
     "Losses": "7"
     ...
   },
+  ...18 more items
 ]
 ```
 
-```javascript
-const league = 'La-Liga';
-const clubName = 'Real Madrid';
 
-fbref.leaguePlayersStats(league, clubName).then((players) => {
-	console.log(players);
+```javascript
+import { transfermarkt } from 'football-stats-data';
+
+transfermarkt.latestUpdates({ minAge: 20, maxAge: 25 }).then(players => {
+  console.log(players);
 });
 
-/**
+```
+
+```javascript
 [
   {
-    "Rk": "275",
-    "Player": "Vinicius Júnior",
-    "Nation": "br BRA",
-    "Position": "FW",
-    "Squad": "Real Madrid",
-    "Current age": "22-323",
-    "Year of birth": "2000",
-    "Matches Played": "32",
-    "Starts": "31",
-    "Minutes": "2,733",
-    "90s Played": "30.4",
-    "Goals": "10",
-    "Assists": "9",
-    "Goals + Assists": "19",
-    "Non-Penalty Goals": "10",
-    "Yellow Cards": "10",
-    "Red Cards": "1",
-    "xG": "10.4",
-    "Non-Penalty xG": "10.4",
-    "xAG": "9.0",
-    "npxG + xAG": "0.64",
-    "Progressive Carries": "216",
-    ...
+    Player: 'João Pedro',
+    Position: 'Centre-Forward',
+    Age: '21',
+    Club: 'Watford FC',
+    'New Market Value': '€32.00m',
+    'old market value': '€24.00m',
+    Difference: '€8.00m',
+    'per cent': '33.3 %',
+    'Changed on': '01.06.2023'
   },
-  {...},
-  {...},
-  ...
+  {
+    Player: 'Anel Ahmedhodzic',
+    Position: 'Centre-Back',
+    Age: '24',
+    Club: 'Sheffield United',
+    'New Market Value': '€20.00m',
+    'old market value': '€16.00m',
+    Difference: '€4.00m',
+    'per cent': '25.0 %',
+    'Changed on': '01.06.2023'
+  },
+  ...25 more elements
 ]
-*/
 ```
 
 ## Development setup

@@ -9,7 +9,7 @@ const tooManyReqErrText = `
 	It is recommended to cache the result of each function call as Fbref imposes a limit on the number of requests allowed per minute
 `;
 
-export class Fbref {
+class Fbref {
 	standings = async (leagueName: TLeagueName) => {
 		try {
 			if (!(leagueName in Leagues)) throw new Error(leagueErrText);
@@ -51,3 +51,5 @@ export class Fbref {
 		}
 	};
 }
+
+export const fbref = new Fbref()

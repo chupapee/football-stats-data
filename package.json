@@ -1,7 +1,7 @@
 {
 	"name": "football-stats-data",
-	"version": "0.0.2",
-	"description": "A simple JavaScript API providing football data",
+	"version": "0.0.3",
+	"description": "A simple package providing football data",
 	"keywords": [
 		"football",
 		"football-data",
@@ -20,9 +20,8 @@
 		"lint": "eslint \"src/**/*\"",
 		"lint:fix": "eslint \"src/**/*\" --fix",
 		"test": "jest",
-		"copy": "cp package.json dist/",
-		"build": "rm -rf dist && tsc && npm run copy",
-		"generate-readme": "npx readme-md-generator"
+		"copy": "cp package.json dist/ && cp README.md dist/",
+		"build": "rm -rf dist && tsc && npm run copy"
 	},
 	"dependencies": {
 		"@types/node": "^20.2.5",
